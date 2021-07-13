@@ -35,4 +35,5 @@ The reason behind using Ctypes is to try another way to invoke C APIs in shared 
     python success.py
     ```
 
-
+## Blog
+[Python Ctypes for Loading and Calling Shared Libraries](https://www.dynamsoft.com/codepool/python-ctypes-load-call-shared-library.html)
