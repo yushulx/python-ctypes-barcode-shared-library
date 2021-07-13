@@ -8,10 +8,10 @@ class SamplingImageData(Structure):
     _fields_ = [("bytes", POINTER(c_byte)), ("width", c_int), ("height", c_int)]
 
 class ExtendedResult(Structure):
-    _fields_ = [("resultType", c_int),
-                ("barcodeFormat", c_int),
+    _fields_ = [("resultType", c_uint),
+                ("barcodeFormat", c_uint),
                 ("barcodeFormatString", c_char_p),
-                ("barcodeFormat_2", c_int),
+                ("barcodeFormat_2", c_uint),
                 ("barcodeFormatString_2", c_char_p),
                 ("confidence", c_int),
                 ("bytes", POINTER(c_byte)),
@@ -26,10 +26,10 @@ class ExtendedResult(Structure):
                 ]
 
 class LocalizationResult(Structure):
-    _fields_ = [("terminatePhase", c_int), 
-    ("barcodeFormat", c_int),
+    _fields_ = [("terminatePhase", c_uint), 
+    ("barcodeFormat", c_uint),
     ("barcodeFormatString", c_char_p),
-    ("barcodeFormat_2", c_int),
+    ("barcodeFormat_2", c_uint),
     ("barcodeFormatString_2", c_char_p),
     ("x1", c_int),
     ("y1", c_int),
@@ -44,7 +44,7 @@ class LocalizationResult(Structure):
     ("pageNumber", c_int),
     ("regionName", c_char_p),
     ("documentName", c_char_p),
-    ("resultCoordinateType", c_int),
+    ("resultCoordinateType", c_uint),
     ("accompanyingTextBytes", POINTER(c_byte)),
     ("accompanyingTextBytesLength", c_int),
     ("confidence", c_int),
@@ -52,9 +52,9 @@ class LocalizationResult(Structure):
     ]
 
 class TextResult(Structure):
-    _fields_ = [("barcodeFormat", c_int), 
+    _fields_ = [("barcodeFormat", c_uint), 
     ("barcodeFormatString", c_char_p), 
-    ("barcodeFormat_2", c_int), 
+    ("barcodeFormat_2", c_uint), 
     ("barcodeFormatString_2", c_char_p), 
     ("barcodeText", c_char_p), 
     ("barcodeBytes", POINTER(c_byte)),
@@ -73,14 +73,6 @@ class TextResult(Structure):
 class TextResultArray(Structure):
     _fields_= [("resultsCount",c_int),
               ("results", POINTER(POINTER(TextResult)))]
-
-def load_dll(dll_path, dll_name):
-    os.environ['path'] += ';' + dll_path
-    if 'Windows' in system:                   
-        dll = windll.LoadLibrary(dll_path + '\\' + dll_name)
-    else:
-        dll = CDLL(os.path.join(dll_path, dll_name))
-    return dll
 
 dbr = None
 if 'Windows' in system:         
