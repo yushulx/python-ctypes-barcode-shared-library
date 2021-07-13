@@ -98,7 +98,7 @@ instance = dbr.DBR_CreateInstance()
 DBR_InitLicense = dbr.DBR_InitLicense
 DBR_InitLicense.argtypes = [c_void_p, c_char_p] 
 DBR_InitLicense.restype = c_int
-ret = DBR_InitLicense(instance, c_char_p('t0069fQAAAG1B1nLfAP6tE+J0FJCkhEnDg5eWbRtiICRrEsGSw4GewLbJQK+CSWIz1xtHp3hexsbwGZUPQ+PZV+U2kU/H+JL2'.encode('utf-8')))
+ret = DBR_InitLicense(instance, c_char_p('LICENSE-KEY'.encode('utf-8'))) # https://www.dynamsoft.com/customer/license/trialLicense?product=dbr
 print(ret)
 
 # DBR_DecodeFile
