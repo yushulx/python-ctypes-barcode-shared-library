@@ -8,7 +8,7 @@ if (CMAKE_HOST_WIN32)
 else()
     LINK_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/lib/Linux")
 endif()
-add_library(${PROJECT_NAME} SHARED bridge.c)
+add_library(${PROJECT_NAME} SHARED bridge.cpp)
 
 if(CMAKE_HOST_WIN32)
     target_link_libraries (${PROJECT_NAME} "DBRx64")
